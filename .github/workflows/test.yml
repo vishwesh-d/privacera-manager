@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: [self-hosted, k8s, linux]
+    runs-on: [self-hosted, k8s, Linux]
     steps:
       - name: Print message
         run: echo "🎉 Self-hosted runner is working!"
