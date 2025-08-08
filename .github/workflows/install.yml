@@ -29,6 +29,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   EKS_CLUSTER_NAME: ${{ secrets.EKS_CLUSTER_NAME }}
+  KUBECONFIG: $PWD/kubeconfig
 
 jobs:
   install:
