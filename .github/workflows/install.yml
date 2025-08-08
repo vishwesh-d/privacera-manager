@@ -255,7 +255,7 @@ jobs:
           
           # Update kubeconfig for EKS cluster
           echo ${EKS_CLUSTER_NAME}
-          aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER_NAME}
+          aws eks update-kubeconfig --region ${AWS_REGION} --name "vishwesh-demo"
           
           echo "Current kubectl context:"
           kubectl config current-context
