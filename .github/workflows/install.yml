@@ -259,6 +259,9 @@ jobs:
           #echo ${EKS_CLUSTER_NAME}
           #aws eks update-kubeconfig --region ${AWS_REGION} --name "vishwesh-demo"
           export KUBECONFIG=$PWD/kubeconfig
+          aws sts get-caller-identity
+          aws eks update-kubeconfig --region ${AWS_REGION} --name "vishwesh-demo"
+          kubectl get nodes
           
           echo "Current kubectl context:"
           kubectl config current-context
