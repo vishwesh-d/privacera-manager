@@ -255,7 +255,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::020403791031:role/AmazonEKSAutoClusterRole
-          aws-region: ${AWS_REGION}
+          aws-region: "us-east-1"
 
 
       - name: Setup Kubernetes context
