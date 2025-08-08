@@ -29,7 +29,6 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   EKS_CLUSTER_NAME: ${{ secrets.EKS_CLUSTER_NAME }}
-  KUBECONFIG: $PWD/kubeconfig
 
 jobs:
   install:
@@ -259,6 +258,7 @@ jobs:
           # Update kubeconfig for EKS cluster
           #echo ${EKS_CLUSTER_NAME}
           #aws eks update-kubeconfig --region ${AWS_REGION} --name "vishwesh-demo"
+          export KUBECONFIG=$PWD/kubeconfig
           
           echo "Current kubectl context:"
           kubectl config current-context
@@ -273,6 +273,7 @@ jobs:
 
       - name: Create namespace
         run: |
+          export KUBECONFIG=$PWD/kubeconfig
           echo "Creating namespace '${DEPLOYMENT_ENV_NAME}' if it doesn't exist..."
           kubectl create namespace ${DEPLOYMENT_ENV_NAME} --dry-run=client -o yaml | kubectl apply -f - --validate=false
           echo "Namespace '${DEPLOYMENT_ENV_NAME}' is ready."
@@ -455,6 +456,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          export KUBECONFIG=$PWD/kubeconfig
           echo "Running upgrade..."
           ls -la
           cd ${GITHUB_WORKSPACE}/privacera-manager
@@ -523,6 +525,7 @@ jobs:
 
       - name: Display deployment status
         run: |
+          export KUBECONFIG=$PWD/kubeconfig
           echo "=== Deployment Summary ==="
           echo "Environment: ${DEPLOYMENT_ENV_NAME}"
           echo "Platform: ${DEPLOYMENT_ENV_TYPE}"
