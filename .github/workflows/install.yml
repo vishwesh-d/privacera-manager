@@ -254,8 +254,11 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::020403791031:role/AmazonEKSAutoClusterRole
-          aws-region: "us-east-1"
+          aws-access-key-id: "AKIAQJQBJES3USRRZDFX"
+          aws-secret-access-key: "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"
+          aws-region: "us-east-1"        
+          #role-to-assume: arn:aws:iam::020403791031:role/AmazonEKSAutoClusterRole
+          #aws-region: "us-east-1"
 
 
       - name: Setup Kubernetes context
