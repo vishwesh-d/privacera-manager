@@ -251,6 +251,13 @@ jobs:
           pip3 install ansible-core>=2.12.0
           ansible --version
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::020403791031:role/AmazonEKSAutoClusterRole
+          aws-region: ${AWS_REGION}
+
+
       - name: Setup Kubernetes context
         run: |
           echo "Setting up Kubernetes context using AWS EKS..."
